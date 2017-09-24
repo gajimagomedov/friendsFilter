@@ -1,0 +1,256 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	list-style: none;
+}
+
+body {
+	font-family: Helvetica;
+}
+
+.page {
+	width: 100%;
+	min-height: 100vh;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.open__friend-filter {
+	text-align: center;
+}
+
+.open__friend-filter a {
+	cursor: pointer;
+	display: inline-block;
+	padding: 5px 15px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000;
+	background: #aeaeaa;
+	border-radius: 15px;
+	transition: all 1s;
+}
+
+.open__friend-filter a:hover {
+	background: grey;
+}
+
+.friend-filter{
+	display: none;
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+
+.friend-filter .friend-filter__content{
+    margin: 40px auto 0px auto;
+    width: 750px;
+    height: 550px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius:10px;
+    box-shadow: 0px 0px 10px #000;
+    position: relative;
+}
+
+.ff-top {
+	background: #FF7373;
+	min-height: 45px;
+	padding: 5px 15px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.exit {
+	width: 30px;
+	height: 30px;
+	background: url(../img/ex.png) no-repeat center center;
+	background-size: 100% 100%;
+}
+
+.ff-top__select-friend {
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.ff-search {
+	background: #ccc;
+	padding: 10px 17px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ff-search_input {
+	width: 48%;
+	height: 25px;
+	border-radius: 15px;
+	padding: 3px 15px;
+	color: #999;
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.search-friend {
+	background: #fff url(../img/search.png) no-repeat left center;
+	background-size: 6% 70%;
+  background-position: 2%;
+  padding: 3px 27px;
+}
+
+
+.ff-search_input:focus::placeholder {
+	opacity: 0;
+}
+
+.ff-list {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ff-list__col {
+	width: 50%;
+	height: 62vh;
+	padding: 0px 0px;
+}
+
+
+
+.your-friends__title {
+	font-size: 14px;
+	color: grey;
+}
+
+.your-friends {
+	border-right: 1px solid #ccc;
+}
+
+.your-friends__title {
+	border-bottom: 1px solid #ccc;
+	padding: 6px 0px;
+	font-weight: bold;
+	margin: 0 auto;
+	width: 92%;
+
+}
+
+.friends-list {
+	border-left: 1px solid #ccc;
+}
+
+.ff-list__content {
+	height: 93%;
+	overflow-y: auto;
+	padding-left: 15px;
+}
+
+#ff-list {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: column;
+}
+
+.ff-item {
+	margin: 7px 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 95%;
+}
+
+
+.ff-info {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.ff-photo {
+	cursor: pointer;
+	border-radius: 50%;
+	overflow: hidden;
+	width: 45px;
+	height: 45px;
+	margin-right: 5px;
+}
+
+
+
+.ff-add {
+	width: 25px;
+	height: 25px;
+	background: url(../img/plus.png) no-repeat center center;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+
+.ff-del {
+	width: 25px;
+	height: 25px;
+	background: url(../img/del-1.png) no-repeat center center;
+	background-size: 58% 58%;
+	cursor: pointer;
+}
+
+
+.ff-bottom {
+	background: #ccc;
+	min-height: 64px;
+	width: 100%;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0 15px;
+	position: absolute;
+	z-index: 333;
+}
+
+.btn-save {
+	text-decoration: none;
+	color: #fff;
+	background: #FF7373;
+	border-radius: 10px;
+	padding: 5px 10px; 
+	transition: all 1s;
+}
+
+.btn-save:hover {
+	opacity: 0.8;
+}
