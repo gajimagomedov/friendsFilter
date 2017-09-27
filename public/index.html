@@ -30,16 +30,15 @@
           <div class="ff-list">
             <div class="your-friends ff-list__col">
               <div class="your-friends__title">Ваши друзья</div>
-              <div class="ff-list__content ff-list__main">  
-              <div id="result"></div>
+              <ul class="ff-list__content ff-list__main">        
+               <!-- <div id="result"></div>-->
 
-  
-              </div>
+              </ul>
             </div>
-            <div class="friends-list ff-list__col">
+            <ul class="friends-list ff-list__col">
               <div class="your-friends__title">Друзья в списке</div>
-              <div class="ff-list__content ff-list__user"></div>
-            </div>
+              
+            </ul>
           </div>
 
           <div class="ff-bottom">
@@ -51,18 +50,16 @@
  
     <script src="bundle.js"></script>
     <script type="text/x-handlebars-template" id="friendFilter">
-    <ul class="list-group" id="ff-list">
-        {{#each list}}
-        <li class="ff-item">
-          <div class="ff-info">
-            <span class="ff-photo"><img src={{photo_50}} alt="" width="45px"></span>
-            <span class="ff-name">{{first_name}} {{last_name}}</span>
-          </div>
-          <div class="ff-add" data-role="addFriend"></div>
-        </li>
-        {{/each}}
-    </ul>
-</script>
+      {{#each list}}
+      <li class="ff-item" data-id={{uid}}>
+        <div class="ff-info">
+          <span class="ff-photo"><img src={{photo_50}} alt="" width="45px"></span>
+          <span class="ff-name">{{first_name}} {{last_name}}</span>
+        </div>
+        <div class="ff-add" data-role="addFriend"></div>
+      </li>
+      {{/each}}
+    </script>
 
   </body>
 </html>

@@ -111,10 +111,9 @@ body {
 }
 
 .search-friend {
-	background: #fff url(../img/search.png) no-repeat left center;
-	background-size: 6% 70%;
+  background-size: 6% 70%;
   background-position: 2%;
-  padding: 3px 27px;
+  padding: 3px 15px;
 }
 
 
@@ -164,7 +163,6 @@ body {
 .ff-list__content {
 	height: 93%;
 	overflow-y: auto;
-	padding-left: 15px;
 }
 
 #ff-list {
@@ -177,7 +175,7 @@ body {
 }
 
 .ff-item {
-	margin: 7px 0;
+	padding: 15px;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -185,7 +183,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 95%;
+	width: 100%;
 }
 
 
