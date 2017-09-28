@@ -50,8 +50,7 @@ new Promise(function(resolve){
 		let inputUserList = document.getElementById('user-search');//Поиск списка пользователя
 		let listFriends = response;//Переменная для хранения данных с сервера
 		let userListFriends = [];//Переменная для хранения списка пользователя
-		let wrapButton = document.querySelector('.ff-icon');
-	
+
 		btnOpen.addEventListener('click', function(){// Событие "открыть окно friendFilter".
 			popWindow.style.display = "block";
 		});
@@ -62,19 +61,20 @@ new Promise(function(resolve){
 
 		function renderList(responseFriend, listRender){//Функция для отрисовки списка друзей, принимает на вход два аргумента: 1)массив из списка друзей. 2)список ,куда будем рендерить 
 			let source = friendFilter.innerHTML;
-			console.log(source);
-			templateFn = Handlebars.compile(source);
-			template = templateFn({list:responseFriend});
-			
+			if(listRender === userList){
+			 let result =	source.replace('ff-add','ff-del');
+			 templateFn = Handlebars.compile(result);
+			 template = templateFn({list:responseFriend});
+			} else {
+				templateFn = Handlebars.compile(source);
+				template = templateFn({list:responseFriend});
+			}
+
 			listRender.innerHTML = template;
 		}
 
-		console.log(mainList.querySelector('.ff-add'));
-
 		renderList(listFriends, mainList);
 		
-		console.log(mainList.querySelector('.ff-add'));
-
 		popWindow.addEventListener('input',function(e){//Событие поиска друзей в списке через делегирование.
 			let inputValue = e.target.value,
 			 		searchList = '',
@@ -104,9 +104,9 @@ new Promise(function(resolve){
 			if(e.target.className === "ff-add"){
 				let currentElement = e.target.closest('li');
 				addFriend(e, currentElement);
-
 			} else if(e.target.className === "ff-del") {
-				removeFriend(e,currentElement);
+				let currentElement = e.target.closest('li');
+				deleteFriend(e,currentElement);
 			}
 		});
 
@@ -114,7 +114,7 @@ new Promise(function(resolve){
 			let currentFriend = element.getAttribute('data-id'),	
 					buttonAdd =	element.querySelector('.ff-add'),
 					thisFriend;
-
+				
 			for(let i = 0; i < listFriends.length; i++){
 				if(listFriends[i].uid.toString() === currentFriend){
 					thisFriend = listFriends[i];
@@ -131,15 +131,34 @@ new Promise(function(resolve){
 					thisFriend;
 			
 			for(let i = 0; i < userListFriends.length; i++){
-				if(userListFriends[i].uid.toString() === friendId){
+				if(userListFriends[i].uid.toString() === currentFriend){
 					thisFriend = userListFriends[i];
 					listFriends.push(thisFriend);
 					userListFriends.splice([i], 1);
-					renderList(mainList, listFriends);
-					renderList(userList, userListFriends);
+					renderList(listFriends, mainList);
+					renderList(userListFriends, userList);
 				};
 			};
 		};
+
+		function loadLocalStorage(){
+			if(localStorage.listFriendsToJSON && localStorage.userListFriendsToJSON){
+				listFriends = JSON.parse(localStorage.listFriendsToJSON);
+				userListFriends = JSON.parse(localStorage.userListFriendsToJSON);
+				renderList(listFriends,mainList);
+				renderList(userListFriends,userList);
+			}	else {
+				renderList(listFriends, mainList);
+			}
+		}
+
+		loadLocalStorage();
+
+		document.addEventListener('mousedown', dragStart);
+
+		function dragStart(){
+
+		}
 
 
 
