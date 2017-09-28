@@ -149,10 +149,12 @@ body {
 
 .your-friends__title {
 	border-bottom: 1px solid #ccc;
-	padding: 6px 0px;
+	padding: 6px 15px;
 	font-weight: bold;
 	margin: 0 auto;
-	width: 92%;
+	color: #000;
+	background: #fff;
+	width: 100%;
 
 }
 
@@ -245,15 +247,20 @@ body {
 	z-index: 333;
 }
 
-.btn-save {
-	text-decoration: none;
-	color: #fff;
-	background: #FF7373;
-	border-radius: 10px;
-	padding: 5px 10px; 
-	transition: all 1s;
+.btn-ff {
+	text-align: center;
+    line-height: 25px;
+    text-decoration: none;
+    height: 25px;
+    width: 100px;
+    margin: 0 5px;
+    color: #fff;
+    background: #FF7373;
+    border-radius: 10px;
 }
 
-.btn-save:hover {
+
+
+.btn-ff:hover {
 	opacity: 0.8;
 }
