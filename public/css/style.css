@@ -206,20 +206,25 @@ body {
 }
 
 
-
-.ff-add {
+.ff-icon {
 	width: 25px;
 	height: 25px;
-	background: url(../img/plus.png) no-repeat center center;
-	background-size: 100% 100%;
 	cursor: pointer;
 }
 
-.ff-del {
+.ff-add {
+	background: url(../img/plus.png) no-repeat center center;
+	background-size: 100% 100%;
 	width: 25px;
 	height: 25px;
+	cursor: pointer;	
+}
+
+.ff-del {
 	background: url(../img/del-1.png) no-repeat center center;
 	background-size: 58% 58%;
+	width: 25px;
+	height: 25px;
 	cursor: pointer;
 }
 
