@@ -41,23 +41,20 @@ new Promise(function(resolve){
 	});
 	}).then(function(response){
 	return new Promise(function(resolve){
-		let btnOpen = document.querySelector(".open__friend-filter");//Переменная для кнопки "friendFilter"
-		let popWindow = document.querySelector(".friend-filter");//Переменная для окна friendFilter
-		let btnClose = document.querySelector(".exit");//Переменная для кнопки "close"
+		const btnOpen = document.querySelector(".open__friend-filter");//Переменная для кнопки "friendFilter"
+		const popWindow = document.querySelector(".friend-filter");//Переменная для окна friendFilter
+		const btnClose = document.querySelector(".exit");//Переменная для кнопки "close"
+		let saveLocalStorage = document.querySelector('.btn-ff .btn-save')//Переменная для кнопки "сохранить"
+		//let clearLocalStorage = popWindow.querySelector('.btn-ff .btn-clear')//Переменная для кнопки "очистить"
 		let mainList = document.querySelector('.ff-list__main');//Переменная для основного списка
 		let userList = document.querySelector('.ff-list__user')//Переменная для списка пользователя 
 		let inputMainList = document.getElementById('main-search');//Поиск основного списка
 		let inputUserList = document.getElementById('user-search');//Поиск списка пользователя
 		let listFriends = response;//Переменная для хранения данных с сервера
 		let userListFriends = [];//Переменная для хранения списка пользователя
+		let listContent = document.querySelector('.ff-list');
 
-		btnOpen.addEventListener('click', function(){// Событие "открыть окно friendFilter".
-			popWindow.style.display = "block";
-		});
-		
-		btnClose.addEventListener('click', function(){// Событие "закрыть окно friendFilter".
-			popWindow.style.display = "none";
-		});
+	
 
 		function renderList(responseFriend, listRender){//Функция для отрисовки списка друзей, принимает на вход два аргумента: 1)массив из списка друзей. 2)список ,куда будем рендерить 
 			let source = friendFilter.innerHTML;
@@ -89,30 +86,31 @@ new Promise(function(resolve){
 			}
 
 			let result = [];
+
 			for(let i = 0; i < searchFriend.length; i++){
 				let inputValueFriend = searchFriend[i].first_name + ' ' + searchFriend[i].last_name;
 				if(inputValueFriend.toLowerCase().indexOf(inputValue.toLowerCase()) > -1) {
 					result.push(searchFriend[i]);
 				}
 			}
-			
 			searchList.innerHTML = "";
 			renderList(result,searchList);
 		});
 
-		popWindow.addEventListener('click', function(e){
+		
+		function clickButtonFriend(e){
 			if(e.target.className === "ff-add"){
 				let currentElement = e.target.closest('li');
 				addFriend(e, currentElement);
+				console.log(currentElement);
 			} else if(e.target.className === "ff-del") {
 				let currentElement = e.target.closest('li');
 				deleteFriend(e,currentElement);
 			}
-		});
+		};
 
 		function addFriend(e,element){
 			let currentFriend = element.getAttribute('data-id'),	
-					buttonAdd =	element.querySelector('.ff-add'),
 					thisFriend;
 				
 			for(let i = 0; i < listFriends.length; i++){
@@ -141,6 +139,8 @@ new Promise(function(resolve){
 			};
 		};
 
+		
+
 		function loadLocalStorage(){
 			if(localStorage.listFriendsToJSON && localStorage.userListFriendsToJSON){
 				listFriends = JSON.parse(localStorage.listFriendsToJSON);
@@ -152,14 +152,25 @@ new Promise(function(resolve){
 			}
 		}
 
-		loadLocalStorage();
+	
+		popWindow.addEventListener('click', clickButtonFriend);
+		
+		btnOpen.addEventListener('click', function(){// Событие "открыть окно friendFilter".
+			popWindow.style.display = "block";
+		});
+	
+		btnClose.addEventListener('click', function(){// Событие "закрыть окно friendFilter".
+			popWindow.style.display = "none";
+		});
 
-		document.addEventListener('mousedown', dragStart);
 
-		function dragStart(){
 
-		}
+		//saveLocalStorage.addEventListener('click',function(){
+		//	localStorage.listFriendsToJSON = JSON.stringify(listFriends);
+		//	localStorage.userListFriendsToJSON = JSON.stringify(userList);
+		//});
 
+		//loadLocalStorage();
 
 
 	});

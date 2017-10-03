@@ -132,7 +132,7 @@ body {
 
 .ff-list__col {
 	width: 50%;
-	height: 62vh;
+	height: 64vh;
 	padding: 0px 0px;
 }
 
@@ -233,7 +233,9 @@ body {
 
 .ff-bottom {
 	background: #ccc;
-	min-height: 64px;
+	min-height: 55px;
+	position: absolute;
+	bottom: 0;
 	width: 100%;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -248,6 +250,7 @@ body {
 }
 
 .btn-ff {
+	cursor: pointer;
 	text-align: center;
     line-height: 25px;
     text-decoration: none;
